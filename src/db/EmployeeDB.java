@@ -3,7 +3,6 @@ package db;
 import models.Employee;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import util.HRManagerUtil;
@@ -11,6 +10,7 @@ import util.HRManagerUtil;
 public class EmployeeDB {
 
     private List<Employee> employees;
+    private int id;
 
     public EmployeeDB() {
         addMockData();
@@ -18,14 +18,26 @@ public class EmployeeDB {
 
     public void addEmployee(Employee employee) {
         //TODO: Implement
+    	employees.add(employee);
     }
 
-    public void deleteEmployee(Employee employee) {
+    public void deleteEmployee(Employee employee, int id) {
         //TODO: Implement
+    	employees.remove(id);
+    	
     }
 
     public void updateEmployee(Employee employee) {
         //TODO: Implement
+    	for (Employee emp : employees) {
+    		// if prename and surname exist in the database 
+    		if (emp != null && emp.getSurname().equals(employee.getSurname()) && emp.getPrename().equals(employee.getPrename())) {
+    			// then
+    		}
+    	}
+   
+    	System.out.println(id);
+    	employees.set(id, employee);
     }
 
     private void addMockData() {
@@ -63,5 +75,20 @@ public class EmployeeDB {
 
     public List<Employee> getEmployees() {
         return employees;
+    }
+    
+    public int getEmployeeById(int id) {
+    	Employee employee = employees.get(id);
+    	return id;
+    }
+    
+    public boolean employeeExists(int id) {
+    	if (employees.get(id) != null) {
+    		this.id = id;
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
 }

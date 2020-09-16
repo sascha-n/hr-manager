@@ -80,4 +80,15 @@ public class Employee {
     public String getId() {
         return id;
     }
+    
+    @Override
+    public String toString() {
+    	 return ("\t" +this.getId()+
+                     " \t\t"+ this.getPrename() + " " + this.getSurname() +
+                     " \t" + this.getBirthdate() + 
+                     " \t"+ this.getJobDescription() +
+                     " \t"+  this.getSalary() + 
+                     " \t" + this.getEmploymentDate() + 
+                     "\n\n");
+    }
 }
